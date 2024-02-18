@@ -8,4 +8,6 @@ interface IBaseFragment {
 
     fun initActions()
 
+    fun initObserver()
+
 }

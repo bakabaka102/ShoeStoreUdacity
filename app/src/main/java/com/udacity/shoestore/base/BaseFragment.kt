@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 
 abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
 
     private var _mFragmentBinding: VB? = null
     val mFragmentBinding: VB get() = _mFragmentBinding!!
+
+    fun getNavController(): NavController? = (activity as? BaseActivity<*>)?.getNavController()
 
     abstract fun getViewBinding(): Int
 
@@ -26,6 +29,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
         initData()
         initViews()
         initActions()
+        initObserver()
         return _mFragmentBinding?.root
     }
 

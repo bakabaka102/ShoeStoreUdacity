@@ -19,6 +19,10 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>() {
 
     }
 
+    override fun initObserver() {
+
+    }
+
     override fun getViewBinding(): Int  = R.layout.fragment_blank
 
 

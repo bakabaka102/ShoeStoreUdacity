@@ -1,12 +1,12 @@
-package com.udacity.shoestore.features.login
+package com.udacity.shoestore.features.register
 
 import com.udacity.shoestore.R
 import com.udacity.shoestore.base.BaseFragment
-import com.udacity.shoestore.databinding.FragmentLoginBinding
+import com.udacity.shoestore.databinding.FragmentRegisterBinding
 
-class LoginFragment : BaseFragment<FragmentLoginBinding>() {
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
-    override fun getViewBinding() = R.layout.fragment_login
+    override fun getViewBinding() = R.layout.fragment_register
 
     override fun initData() {
 
