@@ -9,15 +9,33 @@
             android:id="@+id/loginFragment"
             android:name="com.udacity.shoestore.features.login.LoginFragment"
             android:label="fragment_login"
-            tools:layout="@layout/fragment_login" />
+            tools:layout="@layout/fragment_login" >
+        <action
+                android:id="@+id/action_loginFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+        <action
+                android:id="@+id/action_loginFragment_to_welcomeFragment"
+                app:destination="@id/welcomeFragment" />
+    </fragment>
     <fragment
-            android:id="@+id/blankFragment"
-            android:name="com.udacity.shoestore.features.login.BlankFragment"
-            android:label="BlankFragment"
-            tools:layout="@layout/fragment_blank" />
+            android:id="@+id/welcomeFragment"
+            android:name="com.udacity.shoestore.features.welcome.WelcomeFragment"
+            android:label="WelcomeFragment"
+            tools:layout="@layout/fragment_welcome" >
+        <action
+                android:id="@+id/action_welcomeFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+    </fragment>
     <fragment
             android:id="@+id/registerFragment"
             android:name="com.udacity.shoestore.features.register.RegisterFragment"
             android:label="RegisterFragment"
-            tools:layout="@layout/fragment_register" />
+            tools:layout="@layout/fragment_register" >
+        <action
+                android:id="@+id/action_registerFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+        <action
+                android:id="@+id/action_registerFragment_to_welcomeFragment"
+                app:destination="@id/welcomeFragment" />
+    </fragment>
 </navigation>

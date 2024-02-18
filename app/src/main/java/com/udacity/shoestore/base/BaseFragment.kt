@@ -7,14 +7,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
+import com.udacity.shoestore.shareviewmodel.ShareViewModel
 
 abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
+
+    val shareViewModel : ShareViewModel by activityViewModels()
 
     private var _mFragmentBinding: VB? = null
     val mFragmentBinding: VB get() = _mFragmentBinding!!
 
     fun getNavController(): NavController? = (activity as? BaseActivity<*>)?.getNavController()
+
+    fun hideToolbar() {
+        (activity as BaseActivity<*>).supportActionBar?.hide()
+    }
 
     abstract fun getViewBinding(): Int
 
