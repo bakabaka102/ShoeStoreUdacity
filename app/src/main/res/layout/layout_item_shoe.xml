@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="shareViewModelItem"
+                type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/color_C8E3FF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/imageShoe"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="@dimen/dimen_80dp"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:id="@+id/nameShoe"
+                style="@style/TitleTextView"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageShoe"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Kameyoko shoe" />
+
+        <TextView
+                style="@style/NormalTextView"
+                android:id="@+id/descriptionShoe"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nameShoe"
+                app:layout_constraintTop_toBottomOf="@+id/nameShoe"
+                tools:text="Detail of shoe" />
+
+        <TextView
+                style="@style/TitleTextView"
+                app:layout_constraintStart_toStartOf="@id/descriptionShoe"
+                android:id="@+id/sizeShoe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_30dp"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionShoe"
+                tools:text="12" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

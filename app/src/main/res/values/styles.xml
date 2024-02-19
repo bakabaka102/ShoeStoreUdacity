@@ -40,10 +40,8 @@
     </style>
 
     <style name="NormalTextView">
-        <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:paddingTop">@dimen/dimen_6dp</item>
         <item name="android:paddingBottom">@dimen/dimen_6dp</item>
-        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_4898C6</item>
         <item name="android:textSize">@dimen/dimen_14dp</item>
     </style>

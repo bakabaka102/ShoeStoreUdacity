@@ -6,19 +6,19 @@
     <data>
 
         <variable
-                name="shareViewModelWelcome"
+                name="shareViewModelInstruction"
                 type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="@dimen/dimen_40dp"
             android:layout_marginHorizontal="@dimen/dimen_40dp"
+            android:layout_marginTop="@dimen/dimen_40dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".features.welcome.WelcomeFragment">
+            tools:context=".features.instruction.InstructionFragment">
 
         <ImageView
-                android:id="@+id/imgWelcome"
+                android:id="@+id/imgInstruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@null"
@@ -30,24 +30,24 @@
 
 
         <TextView
-                android:id="@+id/textWelcomeTitle"
+                android:id="@+id/textInstructionTitle"
                 style="@style/TitleTextView"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
                 android:text="@string/app_name"
-                app:layout_constraintTop_toBottomOf="@id/imgWelcome" />
+                app:layout_constraintTop_toBottomOf="@id/imgInstruction" />
 
         <TextView
                 android:id="@+id/textWelcomeContent"
-                style="@style/NormalTextView"
                 android:gravity="center"
+                style="@style/NormalTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_80dp"
                 android:text="@string/shopping"
-                app:layout_constraintTop_toBottomOf="@id/textWelcomeTitle" />
+                app:layout_constraintTop_toBottomOf="@id/textInstructionTitle" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/next"
-                android:onClick="@{() -> shareViewModelWelcome.startNextWelcomeScreen()}"
+                android:onClick="@{() -> shareViewModelInstruction.startNextWelcomeScreen()}"
                 android:layout_marginBottom="@dimen/dimen_80dp"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
