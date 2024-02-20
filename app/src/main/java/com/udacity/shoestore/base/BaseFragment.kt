@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
+import com.udacity.shoestore.MainActivity
+import com.udacity.shoestore.R
 import com.udacity.shoestore.shareviewmodel.ShareViewModel
 
 abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
@@ -18,12 +21,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
     private var _mFragmentBinding: VB? = null
     val mFragmentBinding: VB get() = _mFragmentBinding!!
 
-    fun getNavController(): NavController? = (activity as? BaseActivity<*>)?.getNavController()
-
-    fun hideToolbar() {
-        (activity as BaseActivity<*>).supportActionBar?.hide()
-    }
-
     abstract fun getViewBinding(): Int
 
     override fun onCreateView(
@@ -31,8 +28,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_base, container, false)
         _mFragmentBinding = DataBindingUtil.inflate(inflater, getViewBinding(), container, false)
         initData()
         initViews()

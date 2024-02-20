@@ -11,7 +11,12 @@
     <string name="register">Register</string>
     <string name="suggest_login">Have an account. Login</string>
     <string name="next">Next</string>
-    <string name="shopping">Continue shopping now</string>
+    <string name="shopping">This is Welcome screen.\nNext to shopping now</string>
+    <string name="shopping_ins">This is Instruction screen.\nNext to shopping now</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_shoe">Add shoe</string>
+    <string name="shoe_name">Shoe name</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="description">Description</string>
 </resources>

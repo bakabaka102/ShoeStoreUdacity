@@ -6,8 +6,8 @@
     <data>
 
         <variable
-                name="shareViewModelRegister"
-                type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
+                name="registerViewModel"
+                type="com.udacity.shoestore.features.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/register"
-                android:onClick="@{() -> shareViewModelRegister.goToShoeListScreen()}"
+                android:onClick="@{() -> registerViewModel.startWelcomeScreen()}"
                 app:layout_constraintTop_toBottomOf="@id/layoutPassword" />
 
         <TextView

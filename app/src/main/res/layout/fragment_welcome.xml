@@ -6,8 +6,8 @@
     <data>
 
         <variable
-                name="shareViewModelWelcome"
-                type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
+                name="welcomeViewModel"
+                type="com.udacity.shoestore.features.welcome.WelcomeViewmodel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/next"
-                android:onClick="@{() -> shareViewModelWelcome.startNextWelcomeScreen()}"
+                android:onClick="@{() -> welcomeViewModel.goToInstructionScreen()}"
                 android:layout_marginBottom="@dimen/dimen_80dp"
                 app:layout_constraintBottom_toBottomOf="parent" />
 

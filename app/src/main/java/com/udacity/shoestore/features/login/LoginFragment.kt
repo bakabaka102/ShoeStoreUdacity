@@ -1,20 +1,26 @@
 package com.udacity.shoestore.features.login
 
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.base.BaseFragment
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
+    private val viewModel: LoginViewModel by viewModels()
+
     override fun getViewBinding() = R.layout.fragment_login
 
     override fun initData() {
-        mFragmentBinding.shareViewModelLogin = shareViewModel
+        mFragmentBinding.loginViewModel = viewModel
     }
 
     override fun initViews() {
-
+        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar).title =
+            this.javaClass.simpleName
     }
 
     override fun initActions() {
@@ -31,10 +37,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun observerNavigationWelcome() {
-        shareViewModel.loginSuccess.observe(viewLifecycleOwner) {
+        viewModel.loginSuccess.observe(viewLifecycleOwner) {
             if (it) {
                 navigateToToWelcome()
-                shareViewModel.toComeWelcomeScreen()
+                viewModel.toComeWelcomeScreen()
             }
         }
     }

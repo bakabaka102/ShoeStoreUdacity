@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-                name="loginViewModel"
-                type="com.udacity.shoestore.features.login.LoginViewModel" />
+                name="shareViewModelAddShoe"
+                type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,11 +16,11 @@
             android:layout_height="match_parent"
             tools:ignore="HardcodedText"
             android:paddingHorizontal="@dimen/dimen_40dp"
-            tools:context=".features.login.LoginFragment">
+            tools:context=".features.addmore.AddShoeFragment">
 
         <ImageView
                 android:layout_marginTop="@dimen/dimen_40dp"
-                android:id="@+id/imgSignIn"
+                android:id="@+id/imgShoe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@null"
@@ -29,77 +30,81 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-                android:id="@+id/textLogin"
+                android:id="@+id/textAdd"
                 style="@style/TitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/login"
+                android:text="@string/add_shoe"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgSignIn" />
+                app:layout_constraintTop_toBottomOf="@id/imgShoe" />
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutPhoneNumberLogin"
+                android:id="@+id/layoutNameShoe"
                 style="@style/InputTextCommon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                app:layout_constraintTop_toBottomOf="@id/textLogin">
+                app:layout_constraintTop_toBottomOf="@id/textAdd">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputPhoneNumberLogin"
+                    android:id="@+id/inputNameShoe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/email"
-                    android:text="test@mail.com"
-                    android:inputType="textEmailAddress" />
+                    android:hint="@string/shoe_name"
+                    android:text="Speed"
+                    android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutLoginPassword"
+                android:id="@+id/layoutDescription"
                 style="@style/InputTextCommon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                app:layout_constraintTop_toBottomOf="@id/layoutPhoneNumberLogin">
+                app:layout_constraintTop_toBottomOf="@id/layoutNameShoe">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputLoginPassword"
+                    android:id="@+id/inputDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:text="123456"
-                    android:inputType="textPassword" />
+                    android:hint="@string/description"
+                    android:text="description 1"
+                    android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:id="@+id/spinnerShoeSize"
+                app:layout_constraintTop_toBottomOf="@id/layoutDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/array_size" />
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogin"
+                android:layout_marginHorizontal="@dimen/dimen_20dp"
+                android:id="@+id/btnCancel"
                 style="@style/ButtonStyle"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                android:text="@string/login"
-                android:onClick="@{() -> loginViewModel.startNextLoginScreen()}"
-                app:layout_constraintTop_toBottomOf="@id/layoutLoginPassword" />
+                android:text="@string/cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerShoeSize"
+                app:layout_constraintEnd_toStartOf="@id/btnOk" />
 
-        <TextView
-                android:id="@+id/textLoginForgetPass"
-                style="@style/ClickableTextView"
-                android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+                android:layout_marginHorizontal="@dimen/dimen_20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/btnOk"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_8dp"
-                android:text="@string/forget_password"
-                app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+                android:text="@string/ok"
+                app:layout_constraintStart_toEndOf="@id/btnCancel"
+                app:layout_constraintTop_toTopOf="@id/btnCancel" />
 
-        <TextView
-                android:id="@+id/textSuggestRegister"
-                style="@style/ClickableTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_8dp"
-                android:text="@string/suggest_register"
-                app:layout_constraintTop_toBottomOf="@id/textLoginForgetPass" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

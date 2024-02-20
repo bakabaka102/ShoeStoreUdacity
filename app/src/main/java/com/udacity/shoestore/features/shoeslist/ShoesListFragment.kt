@@ -1,6 +1,9 @@
 package com.udacity.shoestore.features.shoeslist
 
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.base.BaseFragment
 import com.udacity.shoestore.databinding.FragmentShoesListBinding
@@ -17,7 +20,8 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>() {
     }
 
     override fun initViews() {
-
+        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar).title =
+            this.javaClass.simpleName
     }
 
     override fun initActions() {
@@ -28,11 +32,11 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>() {
         shareViewModel.shoesList.observe(viewLifecycleOwner) {
             bindShoeList(it)
         }
+        observerNavigateAddShoeScreen()
     }
 
     private fun bindShoeList(shoesList: MutableList<Shoe>) {
         val itemParent = mFragmentBinding.lnShoeItem
-        //var index = 0
         for (shoe in shoesList) {
             val itemBinding: LayoutItemShoeBinding = DataBindingUtil.inflate(
                 layoutInflater,
@@ -43,38 +47,21 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>() {
             itemBinding.nameShoe.text = shoe.name
             itemBinding.descriptionShoe.text = shoe.company
             itemBinding.sizeShoe.text = shoe.size.toString()
-            /*when (shoe.images[0]) {
-                "model_0" -> itemBinding.imageShoe.setImageResource(R.drawable.ic_launcher_background)
-                "model_1" -> itemBinding.imageShoe.setImageResource(R.drawable.ic_add)
-                "model_2" -> itemBinding.imageShoe.setImageResource(R.drawable.model_2)
-                "model_3" -> itemBinding.imageShoe.setImageResource(R.drawable.model_3)
-                "model_4" -> itemBinding.imageShoe.setImageResource(R.drawable.model_4)
-                "model_5" -> itemBinding.imageShoe.setImageResource(R.drawable.model_5)
-            }*/
             itemParent.addView(itemBinding.root)
         }
-        /*while (index < shoesList.size) {
-            val itemBinding: LayoutItemShoeBinding = DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.layout_item_shoe,
-                itemParent,
-                false
-            )
-            val shoe = shoesList[index]
-            itemBinding.nameShoe.text = shoe.name
-            itemBinding.descriptionShoe.text = shoe.company
-            itemBinding.sizeShoe.text = shoe.size.toString()
-            *//*when (shoe.images[0]) {
-                "model_0" -> itemBinding.imageShoe.setImageResource(R.drawable.ic_launcher_background)
-                "model_1" -> itemBinding.imageShoe.setImageResource(R.drawable.ic_add)
-                "model_2" -> itemBinding.imageShoe.setImageResource(R.drawable.model_2)
-                "model_3" -> itemBinding.imageShoe.setImageResource(R.drawable.model_3)
-                "model_4" -> itemBinding.imageShoe.setImageResource(R.drawable.model_4)
-                "model_5" -> itemBinding.imageShoe.setImageResource(R.drawable.model_5)
-            }*//*
-            itemParent.addView(itemBinding.root)
-            index++
-        }*/
+    }
+
+    private fun observerNavigateAddShoeScreen() {
+        shareViewModel.isPressAddShoe.observe(viewLifecycleOwner) {
+            if (it) {
+                navigateAddShoeScreen()
+                shareViewModel.openAddShoeScreenComplete()
+            }
+        }
+    }
+
+    private fun navigateAddShoeScreen() {
+        findNavController().navigate(ShoesListFragmentDirections.actionShoesListFragmentToAddShoeFragment())
     }
 
 }
