@@ -1,6 +1,7 @@
 package com.udacity.shoestore.features.addmore
 
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.base.BaseFragment
@@ -12,7 +13,8 @@ class AddShoeFragment : BaseFragment<FragmentAddShoeBinding>() {
 
 
     override fun initData() {
-
+        mFragmentBinding.shareViewModelAddShoe = shareViewModel
+        mFragmentBinding.shoe = shareViewModel.shoe
     }
 
     override fun initViews() {
@@ -25,7 +27,19 @@ class AddShoeFragment : BaseFragment<FragmentAddShoeBinding>() {
     }
 
     override fun initObserver() {
+        shareViewModel.eventCancelShoe.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().popBackStack()
+                shareViewModel.cancelAddShoeComplete()
+            }
+        }
 
+        shareViewModel.eventAddShoe.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().popBackStack()
+                shareViewModel.addMoreShoeComplete()
+            }
+        }
     }
 
 

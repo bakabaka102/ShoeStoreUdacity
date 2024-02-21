@@ -8,6 +8,10 @@
         <variable
                 name="shareViewModelAddShoe"
                 type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
+
+        <variable
+                name="shoe"
+                type="com.udacity.shoestore.models.Shoe" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/shoe_name"
-                    android:text="Speed"
+                    android:text="@={shoe.name}"
                     android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/description"
-                    android:text="description 1"
+                    android:text="@={shoe.description}"
                     android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/cancel"
+                android:onClick="@{() -> shareViewModelAddShoe.cancelAddShoe()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinnerShoeSize"
                 app:layout_constraintEnd_toStartOf="@id/btnOk" />
@@ -100,6 +105,7 @@
                 android:id="@+id/btnOk"
                 style="@style/ButtonStyle"
                 android:layout_width="@dimen/dimen_0dp"
+                android:onClick="@{() -> shareViewModelAddShoe.addMoreShoe()}"
                 android:layout_height="wrap_content"
                 android:text="@string/ok"
                 app:layout_constraintStart_toEndOf="@id/btnCancel"

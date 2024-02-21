@@ -9,6 +9,24 @@ class ShareViewModel : ViewModel() {
 
     private val _isPressAddShoe = MutableLiveData(false)
     val isPressAddShoe: LiveData<Boolean> get() = _isPressAddShoe
+
+    //Cancel
+    private val _eventCancelShoe = MutableLiveData(false)
+    val eventCancelShoe: LiveData<Boolean> get() = _eventCancelShoe
+
+    //Add
+    private val _eventAddShoe = MutableLiveData(false)
+    val eventAddShoe: LiveData<Boolean> get() = _eventAddShoe
+
+    var shoe = Shoe("Shoe", 7.0, "ABC", "Good shoe", mutableListOf())
+
+    private var _shoesList = MutableLiveData<MutableList<Shoe>>()
+    val shoesList: LiveData<MutableList<Shoe>> get() = _shoesList
+
+    init {
+        _shoesList.value = mutableListOf(shoe, shoe, shoe, shoe)
+    }
+
     fun openAddShoeScreen() {
         _isPressAddShoe.value = true
     }
@@ -17,21 +35,46 @@ class ShareViewModel : ViewModel() {
         _isPressAddShoe.value = false
     }
 
-    var shoe = Shoe("Shoe 1", 7.0, "ABC", "Good shoe", mutableListOf())
-
-    private var _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
-    val shoesList: LiveData<MutableList<Shoe>> get() = _shoesList
-
-    init {
-        _shoesList.value = mutableListOf(shoe, shoe, shoe, shoe)
+    //Cancel
+    fun cancelAddShoe() {
+        _eventCancelShoe.value = true
     }
 
-    private fun addNewShoe() {
+    fun cancelAddShoeComplete() {
+        _eventCancelShoe.value = false
+    }
+
+    fun addMoreShoe() {
         val list: MutableList<Shoe>? = _shoesList.value
         list?.let {
             it.add(shoe)
             _shoesList.setValue(it)
         }
+        _eventAddShoe.value = true
+        /*when {
+            shoe.description.trim().isEmpty() -> {
+                //_eventDescriptionFailed.value = true
+            }
+
+            shoe.name.trim().isEmpty() -> {
+                //_eventNameFailed.value = true
+            }
+
+            else -> {
+                val list: MutableList<Shoe>? = _shoesList.value
+                list?.let {
+                    it.add(shoe)
+                    _shoesList.setValue(it)
+                }
+                _eventAddShoe.value = true
+            }
+        }*/
     }
+
+    fun addMoreShoeComplete() {
+        _eventAddShoe.value = false
+    }
+
+
 
 }

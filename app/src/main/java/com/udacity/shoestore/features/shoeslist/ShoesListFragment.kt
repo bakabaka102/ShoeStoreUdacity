@@ -1,5 +1,8 @@
 package com.udacity.shoestore.features.shoeslist
 
+import android.content.Intent
+import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
@@ -12,6 +15,14 @@ import com.udacity.shoestore.models.Shoe
 
 class ShoesListFragment : BaseFragment<FragmentShoesListBinding>() {
 
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            val i = Intent()
+            i.action = Intent.ACTION_MAIN
+            i.addCategory(Intent.CATEGORY_HOME)
+            startActivity(i)
+        }
+    }
     override fun getViewBinding() = R.layout.fragment_shoes_list
 
 
@@ -25,11 +36,12 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>() {
     }
 
     override fun initActions() {
-
+        activity?.onBackPressedDispatcher?.addCallback(this, onBackPressedCallback)
     }
 
     override fun initObserver() {
         shareViewModel.shoesList.observe(viewLifecycleOwner) {
+            Log.d("List", it.toString())
             bindShoeList(it)
         }
         observerNavigateAddShoeScreen()
