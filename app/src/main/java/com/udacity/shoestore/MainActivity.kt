@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.mainContainerView) as NavHostFragment
         navController = navHostFragment.navController*/
         //navController = this.findNavController(R.id.mainContainerView)
-        /*setSupportActionBar(binding.toolbar)
-        NavigationUI.setupActionBarWithNavController(this, getNavController())*/
+        setSupportActionBar(binding.toolbar)
+        NavigationUI.setupActionBarWithNavController(this, getNavController())
         Timber.plant(Timber.DebugTree())
     }
 
