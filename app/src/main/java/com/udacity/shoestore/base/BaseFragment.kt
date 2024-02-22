@@ -21,6 +21,8 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), IBaseFragment {
     private var _mFragmentBinding: VB? = null
     val mFragmentBinding: VB get() = _mFragmentBinding!!
 
+    fun getNavController(): NavController? = (activity as? MainActivity)?.getNavController()
+
     abstract fun getViewBinding(): Int
 
     override fun onCreateView(

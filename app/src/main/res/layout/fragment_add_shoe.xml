@@ -44,47 +44,48 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgShoe" />
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutNameShoe"
-                style="@style/InputTextCommon"
+
+        <EditText
+                android:focusable="true"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:layout_constraintTop_toBottomOf="@id/textAdd"
+                android:id="@+id/inputNameShoe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/shoe_name"
+                android:text="@={shoe.name}"
+                android:inputType="text" />
+
+
+        <EditText
                 android:layout_marginTop="@dimen/dimen_16dp"
-                app:layout_constraintTop_toBottomOf="@id/textAdd">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputNameShoe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/shoe_name"
-                    android:text="@={shoe.name}"
-                    android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutDescription"
-                style="@style/InputTextCommon"
+                app:layout_constraintTop_toBottomOf="@id/inputNameShoe"
+                android:id="@+id/inputDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                app:layout_constraintTop_toBottomOf="@id/layoutNameShoe">
+                android:hint="@string/description"
+                android:text="@={shoe.description}"
+                android:inputType="text" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/description"
-                    android:text="@={shoe.description}"
-                    android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatSpinner
+        <EditText
                 android:layout_marginTop="@dimen/dimen_16dp"
-                android:id="@+id/spinnerShoeSize"
-                app:layout_constraintTop_toBottomOf="@id/layoutDescription"
+                app:layout_constraintTop_toBottomOf="@id/inputDescription"
+                android:id="@+id/inputSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/array_size" />
+
+                android:hint="@string/size"
+                android:inputType="numberDecimal" />
+
+        <EditText
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:layout_constraintTop_toBottomOf="@id/inputSize"
+                android:id="@+id/inputCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/company"
+                android:text="@={shoe.company}"
+                android:inputType="text" />
 
         <com.google.android.material.button.MaterialButton
                 android:layout_marginHorizontal="@dimen/dimen_20dp"
@@ -94,9 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/cancel"
-                android:onClick="@{() -> shareViewModelAddShoe.cancelAddShoe()}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinnerShoeSize"
+                app:layout_constraintTop_toBottomOf="@id/inputCompany"
                 app:layout_constraintEnd_toStartOf="@id/btnOk" />
 
         <com.google.android.material.button.MaterialButton
@@ -104,8 +104,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/btnOk"
                 style="@style/ButtonStyle"
+                android:onClick="@{() -> shareViewModelAddShoe.onEventAddShoe(shoe.name, shoe.company, shoe.description)}"
                 android:layout_width="@dimen/dimen_0dp"
-                android:onClick="@{() -> shareViewModelAddShoe.addMoreShoe()}"
                 android:layout_height="wrap_content"
                 android:text="@string/ok"
                 app:layout_constraintStart_toEndOf="@id/btnCancel"

@@ -6,15 +6,19 @@ import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.base.BaseFragment
 import com.udacity.shoestore.databinding.FragmentAddShoeBinding
+import com.udacity.shoestore.models.Shoe
 
 class AddShoeFragment : BaseFragment<FragmentAddShoeBinding>() {
+
+    private val shoe = Shoe("AD Lite", 7.5, "ABC company", "It is good")
 
     override fun getViewBinding() = R.layout.fragment_add_shoe
 
 
     override fun initData() {
         mFragmentBinding.shareViewModelAddShoe = shareViewModel
-        mFragmentBinding.shoe = shareViewModel.shoe
+        mFragmentBinding.lifecycleOwner = this
+        mFragmentBinding.shoe = shoe
     }
 
     override fun initViews() {
@@ -23,24 +27,17 @@ class AddShoeFragment : BaseFragment<FragmentAddShoeBinding>() {
     }
 
     override fun initActions() {
-
+        mFragmentBinding.btnCancel.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun initObserver() {
-        shareViewModel.eventCancelShoe.observe(viewLifecycleOwner) {
+        shareViewModel.isAddedShoe.observe(viewLifecycleOwner) {
             if (it) {
+                shareViewModel.onEventAddShoeComplete()
                 findNavController().popBackStack()
-                shareViewModel.cancelAddShoeComplete()
-            }
-        }
-
-        shareViewModel.eventAddShoe.observe(viewLifecycleOwner) {
-            if (it) {
-                findNavController().popBackStack()
-                shareViewModel.addMoreShoeComplete()
             }
         }
     }
-
-
 }

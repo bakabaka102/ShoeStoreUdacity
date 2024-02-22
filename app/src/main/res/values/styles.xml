@@ -52,6 +52,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TitleItemTextView">
+        <item name="android:textColor">@color/color_4898C6</item>
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="InputTextCommon">
         <item name="boxCornerRadiusBottomStart">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusTopStart">@dimen/dimen_10dp</item>
