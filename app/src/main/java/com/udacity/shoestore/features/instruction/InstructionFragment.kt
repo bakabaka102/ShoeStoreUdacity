@@ -7,15 +7,14 @@ import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.R
 import com.udacity.shoestore.base.BaseFragment
 import com.udacity.shoestore.databinding.FragmentInstructionBinding
-import com.udacity.shoestore.features.welcome.WelcomeFragmentDirections
 
 class InstructionFragment : BaseFragment<FragmentInstructionBinding>() {
 
-    private val viewmodel: InstructionViewmodel by viewModels()
+    private val viewModel: InstructionViewmodel by viewModels()
     override fun getViewBinding() = R.layout.fragment_instruction
 
     override fun initData() {
-        mFragmentBinding.instructionViewModel = viewmodel
+        mFragmentBinding.instructionViewModel = viewModel
     }
 
     override fun initViews() {
@@ -36,10 +35,10 @@ class InstructionFragment : BaseFragment<FragmentInstructionBinding>() {
     }
 
     private fun observerNavigationToShoeList() {
-        viewmodel.toShoeListScreen.observe(viewLifecycleOwner) {
+        viewModel.toShoeListScreen.observe(viewLifecycleOwner) {
             if (it) {
                 navigateToShoeList()
-                viewmodel.goToShoeListScreenComplete()
+                viewModel.goToShoeListScreenComplete()
             }
         }
     }

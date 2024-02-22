@@ -11,11 +11,9 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
-    //private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
     fun getNavController(): NavController {
-        //val mainContainerView = mBinding.mainContainerView as NavHostFragment
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.mainContainerView) as NavHostFragment
         return navHostFragment.navController
@@ -27,10 +25,6 @@ class MainActivity : AppCompatActivity() {
             this,
             R.layout.activity_main
         )
-        /*val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.mainContainerView) as NavHostFragment
-        navController = navHostFragment.navController*/
-        //navController = this.findNavController(R.id.mainContainerView)
         setSupportActionBar(binding.toolbar)
         NavigationUI.setupActionBarWithNavController(this, getNavController())
         Timber.plant(Timber.DebugTree())

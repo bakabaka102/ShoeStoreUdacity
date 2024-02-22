@@ -20,7 +20,6 @@ import com.udacity.shoestore.base.BaseFragment
 import com.udacity.shoestore.databinding.FragmentShoesListBinding
 import com.udacity.shoestore.databinding.LayoutItemShoeBinding
 
-
 class ShoesListFragment : BaseFragment<FragmentShoesListBinding>(), MenuProvider {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
