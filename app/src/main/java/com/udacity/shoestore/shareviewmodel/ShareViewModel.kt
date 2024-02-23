@@ -17,14 +17,16 @@ class ShareViewModel : ViewModel() {
     init {
         _shoesList.value = mutableListOf()
         _shoesList.value = mutableListOf(
-            Shoe("Shoe", 7.0, "ABC", "Good shoe", mutableListOf()),
-            Shoe("Shoe", 7.0, "ABC", "Good shoe", mutableListOf()),
-            Shoe("Shoe", 7.0, "ABC", "Good shoe", mutableListOf())
+            Shoe("Shoe first", 7.0, "ABC", "Good shoe", mutableListOf()),
+            Shoe("Shoe second", 7.1, "ABC", "Good shoe", mutableListOf()),
+            Shoe("Shoe third", 7.2, "ABC", "Good shoe", mutableListOf())
         )
     }
 
-    fun onEventAddShoe(name: String, size: Double,company: String, description: String) {
-        addShoe(name, size, company, description).also { println("habq $size ") }
+    fun onEventAddShoe(name: String, size: Double, company: String, description: String) {
+        addShoe(name, size, company, description).also {
+            println("nanao $size ")
+        }
         _isAddedShoe.value = true
     }
 

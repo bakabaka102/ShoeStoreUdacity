@@ -1,5 +1,6 @@
 package com.udacity.shoestore.features.register
 
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,6 +12,11 @@ import com.udacity.shoestore.databinding.FragmentRegisterBinding
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
     private val viewModel: RegisterViewModel by viewModels()
+    private val mOnBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            activity?.finish()
+        }
+    }
 
     override fun getViewBinding() = R.layout.fragment_register
 
@@ -24,7 +30,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     override fun initActions() {
-
+        activity?.onBackPressedDispatcher?.addCallback(this, mOnBackPressedCallback)
     }
 
     override fun initObserver() {
