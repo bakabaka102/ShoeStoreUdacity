@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="welcomeViewModel"
+            type="com.udacity.shoestore.features.welcome.WelcomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/dimen_40dp"
+        tools:context=".features.welcome.WelcomeFragment">
+
+        <ImageView
+            android:id="@+id/imgWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_40dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textWelcomeTitle"
+            style="@style/TitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            app:layout_constraintTop_toBottomOf="@id/imgWelcome" />
+
+        <TextView
+            android:id="@+id/textWelcomeContent"
+            style="@style/TitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_80dp"
+            android:gravity="center"
+            android:text="@string/shopping"
+            app:layout_constraintTop_toBottomOf="@id/textWelcomeTitle" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWelcomeNext"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginBottom="@dimen/dimen_80dp"
+            android:onClick="@{() -> welcomeViewModel.goToInstructionScreen()}"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

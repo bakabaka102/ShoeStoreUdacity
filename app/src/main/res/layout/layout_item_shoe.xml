@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="shoeItemData"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_C8E3FF">
+
+        <ImageView
+            android:id="@+id/imageShoe"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_80dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameShoe"
+            style="@style/TitleItemTextView"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{shoeItemData.name}"
+            app:layout_constraintEnd_toStartOf="@id/sizeShoe"
+            app:layout_constraintStart_toEndOf="@+id/imageShoe"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Kameyoko shoe" />
+
+        <!--android:text="@{shoeItemData.size}"-->
+        <TextView
+            android:id="@+id/sizeShoe"
+            style="@style/TitleItemTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_12dp"
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{Double.toString(shoeItemData.size)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nameShoe"
+            app:layout_constraintTop_toTopOf="@+id/nameShoe"
+            tools:text="12" />
+
+        <TextView
+            android:id="@+id/descriptionShoe"
+            style="@style/NormalTextView"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingVertical="@dimen/dimen_2dp"
+            android:text="@{shoeItemData.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nameShoe"
+            app:layout_constraintTop_toBottomOf="@+id/nameShoe"
+            tools:text="Detail of shoe" />
+
+        <TextView
+            android:id="@+id/companyShoe"
+            style="@style/NormalTextView"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/dimen_2dp"
+            android:text="@{shoeItemData.company}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nameShoe"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionShoe"
+            tools:text="ABC Company" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

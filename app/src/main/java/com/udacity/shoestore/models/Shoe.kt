@@ -1,6 +1,7 @@
 package com.udacity.shoestore.models
 
 import android.os.Parcelable
+import androidx.databinding.BaseObservable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -9,5 +10,5 @@ data class Shoe(
     var size: Double,
     var company: String,
     var description: String,
-    val images: List<String> = mutableListOf()
-) : Parcelable
+    val images: List<String> = mutableListOf(),
+) : Parcelable, BaseObservable()

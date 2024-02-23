@@ -3,14 +3,11 @@ package com.udacity.shoestore.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
-import androidx.navigation.NavController
 import timber.log.Timber
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var mBinding: VB
-
-    abstract fun getNavController(): NavController
 
     abstract fun instanceViewBinding(): VB
 
