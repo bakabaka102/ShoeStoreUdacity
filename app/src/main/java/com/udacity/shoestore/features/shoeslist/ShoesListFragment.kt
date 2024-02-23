@@ -22,15 +22,6 @@ import com.udacity.shoestore.databinding.LayoutItemShoeBinding
 
 class ShoesListFragment : BaseFragment<FragmentShoesListBinding>(), MenuProvider {
 
-    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            val i = Intent()
-            i.action = Intent.ACTION_MAIN
-            i.addCategory(Intent.CATEGORY_HOME)
-            startActivity(i)
-        }
-    }
-
     private val mOnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             activity?.finish()

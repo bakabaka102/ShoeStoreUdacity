@@ -26,10 +26,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     override fun initViews() {
-        (activity as AppCompatActivity).supportActionBar?.show()
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar)
-            .title = this.javaClass.simpleName
+
     }
 
     override fun initActions() {
