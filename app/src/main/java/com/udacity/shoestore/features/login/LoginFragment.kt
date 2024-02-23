@@ -1,6 +1,7 @@
 package com.udacity.shoestore.features.login
 
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -26,8 +27,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     override fun initViews() {
-        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar).title =
-            this.javaClass.simpleName
+        (activity as AppCompatActivity).supportActionBar?.show()
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar)
+            .title = this.javaClass.simpleName
     }
 
     override fun initActions() {

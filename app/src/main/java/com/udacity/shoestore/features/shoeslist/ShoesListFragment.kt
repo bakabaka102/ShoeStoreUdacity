@@ -31,6 +31,12 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>(), MenuProvider
         }
     }
 
+    private val mOnBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            activity?.finish()
+        }
+    }
+
     override fun getViewBinding() = R.layout.fragment_shoes_list
 
 
@@ -39,14 +45,14 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>(), MenuProvider
     }
 
     override fun initViews() {
-        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar).title =
-            this.javaClass.simpleName
         (activity as AppCompatActivity).supportActionBar?.show()
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar)
+            .title = this.javaClass.simpleName
     }
 
     override fun initActions() {
-        activity?.onBackPressedDispatcher?.addCallback(this, onBackPressedCallback)
+        activity?.onBackPressedDispatcher?.addCallback(this, mOnBackPressedCallback)
         mFragmentBinding.fabAddShoe.setOnClickListener {
             navigateAddShoeScreen()
         }

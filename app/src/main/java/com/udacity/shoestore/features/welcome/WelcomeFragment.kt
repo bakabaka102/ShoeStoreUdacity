@@ -1,5 +1,6 @@
 package com.udacity.shoestore.features.welcome
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,13 +11,15 @@ import com.udacity.shoestore.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>() {
 
-    private val viewModel: WelcomeViewmodel by viewModels()
+    private val viewModel: WelcomeViewModel by viewModels()
 
     override fun initData() {
         mFragmentBinding.welcomeViewModel = viewModel
     }
 
     override fun initViews() {
+        (activity as AppCompatActivity).supportActionBar?.show()
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         (this.activity as MainActivity).findViewById<Toolbar>(R.id.toolbar).title =
             this.javaClass.simpleName
     }

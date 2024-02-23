@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class WelcomeViewmodel: ViewModel() {
+class WelcomeViewModel: ViewModel() {
 
     private val _toInstructionScreen = MutableLiveData(false)
     val toInstructionScreen: LiveData<Boolean> get() = _toInstructionScreen
