@@ -23,14 +23,8 @@ class ShareViewModel : ViewModel() {
         )
     }
 
-    fun onEventAddShoe(name: String, /*size: String, */company: String, description: String) {
-        var sizeDouble: Double = 7.0
-        try {
-            //sizeDouble = size.toDouble()
-        } catch (e: NumberFormatException) {
-            Timber.i("Invalid size entered")
-        }
-        addShoe(name, sizeDouble, company, description)
+    fun onEventAddShoe(name: String, size: Double,company: String, description: String) {
+        addShoe(name, size, company, description).also { println("habq $size ") }
         _isAddedShoe.value = true
     }
 

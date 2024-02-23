@@ -21,3 +21,4 @@ fun EditText.getShoeSize() : String {
     Timber.tag("getShoeSize").i("getShoeSize")
     return this.text.toString()
 }
+

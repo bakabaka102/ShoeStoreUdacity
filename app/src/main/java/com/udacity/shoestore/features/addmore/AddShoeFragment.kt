@@ -11,7 +11,7 @@ import com.udacity.shoestore.models.Shoe
 
 class AddShoeFragment : BaseFragment<FragmentAddShoeBinding>() {
 
-    private val shoe = Shoe("AD Lite", 7.5, "ABC company", "It is good")
+    private val shoe = Shoe("AD Lite", 0.0, "ABC company", "It is good")
 
     override fun getViewBinding() = R.layout.fragment_add_shoe
 
