@@ -10,8 +10,14 @@
             type="com.udacity.shoestore.shareviewmodel.ShareViewModel" />
 
         <variable
-            name="shoe"
+            name="shoeItem"
             type="com.udacity.shoestore.models.Shoe" />
+
+        <import type="com.udacity.shoestore.utils.Converter" />
+
+        <!-- <variable
+             name="converter"
+             type="com.udacity.shoestore.utils.Converter" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,8 +58,9 @@
             android:layout_marginTop="@dimen/dimen_16dp"
             android:focusable="true"
             android:hint="@string/shoe_name"
+            android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={shoe.name}"
+            android:text="@={shoeItem.name}"
             app:layout_constraintTop_toBottomOf="@id/textAdd" />
 
 
@@ -63,22 +70,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_16dp"
             android:hint="@string/description"
+            android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={shoe.description}"
+            android:text="@={shoeItem.description}"
             app:layout_constraintTop_toBottomOf="@id/inputNameShoe" />
 
-        <!--android:value="@={shoe.size}"
-            android:value="@={' ' + shoe.size}"
-            android:text='@{String.format("%.1f", shoe.size)}'
-        -->
+        <!-- Can use android:text="@={`` + shoe.size}" -->
         <EditText
             android:id="@+id/inputSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_16dp"
             android:hint="@string/size"
+            android:importantForAutofill="no"
             android:inputType="numberDecimal|number"
-            android:text="@={`` + shoe.size}"
+            android:text="@={Converter.doubleToString(shoeItem.size)}"
             app:layout_constraintTop_toBottomOf="@id/inputDescription" />
 
         <EditText
@@ -87,8 +93,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_16dp"
             android:hint="@string/company"
+            android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={shoe.company}"
+            android:text="@={shoeItem.company}"
             app:layout_constraintTop_toBottomOf="@id/inputSize" />
 
         <com.google.android.material.button.MaterialButton
@@ -109,7 +116,7 @@
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_20dp"
-            android:onClick="@{() -> shareViewModelAddShoe.onEventAddShoe(shoe.name, shoe.size ,shoe.company, shoe.description)}"
+            android:onClick="@{() -> shareViewModelAddShoe.onEventAddShoe(shoeItem.name, shoeItem.size ,shoeItem.company, shoeItem.description)}"
             android:text="@string/ok"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnCancel"

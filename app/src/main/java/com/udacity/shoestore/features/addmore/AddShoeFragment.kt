@@ -17,9 +17,11 @@ class AddShoeFragment : BaseFragment<FragmentAddShoeBinding>() {
 
 
     override fun initData() {
-        mFragmentBinding.shareViewModelAddShoe = shareViewModel
-        mFragmentBinding.lifecycleOwner = this
-        mFragmentBinding.shoe = shoe
+        with(mFragmentBinding) {
+            shareViewModelAddShoe = shareViewModel
+            lifecycleOwner = this.lifecycleOwner
+            mFragmentBinding.shoeItem = shoe
+        }
     }
 
     override fun initViews() {
