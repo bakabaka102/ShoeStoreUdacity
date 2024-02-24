@@ -1,6 +1,5 @@
 package com.udacity.shoestore.features.shoeslist
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -9,7 +8,6 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
@@ -20,11 +18,28 @@ import com.udacity.shoestore.base.BaseFragment
 import com.udacity.shoestore.databinding.FragmentShoesListBinding
 import com.udacity.shoestore.databinding.LayoutItemShoeBinding
 
-class ShoesListFragment : BaseFragment<FragmentShoesListBinding>(), MenuProvider {
+class ShoesListFragment : BaseFragment<FragmentShoesListBinding>() {
 
     private val mOnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             activity?.finish()
+        }
+    }
+    private val menuProvider = object : MenuProvider {
+
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+            menuInflater.inflate(R.menu.logout_menu, menu)
+        }
+
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+            return when (menuItem.itemId) {
+                R.id.menuItemLogout -> {
+                    findNavController().navigate(ShoesListFragmentDirections.actionShoesListFragmentToLoginFragment())
+                    true
+                }
+
+                else -> false
+            }
         }
     }
 
@@ -71,23 +86,7 @@ class ShoesListFragment : BaseFragment<FragmentShoesListBinding>(), MenuProvider
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
-
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.logout_menu, menu)
-    }
-
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when (menuItem.itemId) {
-            R.id.menuItemLogout -> {
-                findNavController().navigate(ShoesListFragmentDirections.actionShoesListFragmentToLoginFragment())
-                true
-            }
-
-            else -> false
-        }
+        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
 }

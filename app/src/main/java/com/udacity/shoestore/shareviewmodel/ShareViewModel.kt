@@ -24,9 +24,7 @@ class ShareViewModel : ViewModel() {
     }
 
     fun onEventAddShoe(name: String, size: Double, company: String, description: String) {
-        addShoe(name, size, company, description).also {
-            println("nanao $size ")
-        }
+        addShoe(name, size, company, description)
         _isAddedShoe.value = true
     }
 
